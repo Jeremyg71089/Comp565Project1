@@ -1,0 +1,57 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/Windows
+/intermediateDir:obj/Windows
+/platform:Windows
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+
+#---------------------------------- Content ---------------------------------#
+
+#begin 100x50x100Marker.xnb
+/copy:100x50x100Marker.xnb
+
+#begin 100x100x100Brick.xnb
+/copy:100x100x100Brick.xnb
+
+#begin boundingSphereV3.xnb
+/copy:boundingSphereV3.xnb
+
+#begin cloudV3.xnb
+/copy:cloudV3.xnb
+
+#begin colorTexture.xnb
+/copy:colorTexture.xnb
+
+#begin Consolas.xnb
+/copy:Consolas.xnb
+
+#begin dogV6.xnb
+/copy:dogV6.xnb
+
+#begin heightTexture.xnb
+/copy:heightTexture.xnb
+
+#begin inspectorBackground.xnb
+/copy:inspectorBackground.xnb
+
+#begin magentaAvatarV6.xnb
+/copy:magentaAvatarV6.xnb
+
+#begin marble.xnb
+/copy:marble.xnb
+
+#begin marble_0.xnb
+/copy:marble_0.xnb
+
+#begin redAvatarV6.xnb
+/copy:redAvatarV6.xnb
+
+#begin templeV3.xnb
+/copy:templeV3.xnb
+
