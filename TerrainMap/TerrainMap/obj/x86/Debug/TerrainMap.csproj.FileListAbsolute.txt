@@ -23,3 +23,28 @@ c:\users\jeremy\documents\visual studio 2015\Projects\TerrainMap\TerrainMap\bin\
 c:\users\jeremy\documents\visual studio 2015\Projects\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.Direct3D9.xml
 c:\users\jeremy\documents\visual studio 2015\Projects\TerrainMap\TerrainMap\obj\x86\Debug\TerrainMap.exe
 c:\users\jeremy\documents\visual studio 2015\Projects\TerrainMap\TerrainMap\obj\x86\Debug\TerrainMap.pdb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\obj\x86\Debug\TerrainMap.exe
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\obj\x86\Debug\TerrainMap.pdb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\TerrainMap.exe
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\TerrainMap.pdb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.XAudio2.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.Direct3D11.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.DXGI.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.Direct2D1.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.XInput.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.RawInput.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.Direct3D9.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.XAudio2.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.Direct3D11.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.DXGI.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.Direct2D1.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.XInput.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.RawInput.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\TerrainMap\TerrainMap\obj\x86\Debug\TerrainMap.csprojResolveAssemblyReference.cache

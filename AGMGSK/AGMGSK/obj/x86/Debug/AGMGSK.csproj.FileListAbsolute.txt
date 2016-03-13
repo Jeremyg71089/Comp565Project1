@@ -36,3 +36,42 @@ C:\Users\Jeremy\Documents\Visual Studio 2015\Projects\AGMGSK\AGMGSK\bin\Windows\
 C:\Users\Jeremy\Documents\Visual Studio 2015\Projects\AGMGSK\AGMGSK\bin\Windows\Debug\Content\marble_0.xnb
 C:\Users\Jeremy\Documents\Visual Studio 2015\Projects\AGMGSK\AGMGSK\bin\Windows\Debug\Content\redAvatarV6.xnb
 C:\Users\Jeremy\Documents\Visual Studio 2015\Projects\AGMGSK\AGMGSK\bin\Windows\Debug\Content\templeV3.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\obj\x86\Debug\AGMGSK.exe
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\obj\x86\Debug\AGMGSK.pdb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\100x100x100Brick.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\100x50x100Marker.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\boundingSphereV3.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\cloudV3.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\colorTexture.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\Consolas.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\dogV6.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\heightTexture.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\inspectorBackground.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\magentaAvatarV6.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\marble.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\marble_0.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\redAvatarV6.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\templeV3.xnb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\AGMGSK.exe
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\AGMGSK.pdb
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.XAudio2.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.Direct3D11.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.DXGI.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.Direct2D1.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.XInput.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.RawInput.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.Direct3D9.dll
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.XAudio2.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.Direct3D11.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.DXGI.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.Direct2D1.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.XInput.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.RawInput.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\obj\x86\Debug\AGMGSK.csprojResolveAssemblyReference.cache
