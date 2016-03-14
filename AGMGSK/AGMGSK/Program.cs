@@ -17,7 +17,7 @@
  *       the class and semester are specified
  *
  * 
- * Group member:  Mike Barnes
+ * Group member:  Jeremy Galarza
  * Project 1
  * Comp 565 Spring 2016
  */

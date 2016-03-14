@@ -75,3 +75,4 @@ C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug
 C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.RawInput.xml
 C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\obj\x86\Debug\AGMGSK.csprojResolveAssemblyReference.cache
+C:\Users\Jeremy\Documents\GitHub\Comp565Project1\AGMGSK\AGMGSK\bin\Windows\Debug\Content\treasure.xnb

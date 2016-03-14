@@ -283,8 +283,8 @@ public class Stage : Game {
       float terrainHeight = terrain.surfaceHeight( 
 			(int) (anObject3D.Translation.X / spacing), 
 			(int) (anObject3D.Translation.Z / spacing) );
-      anObject3D.Translation = new Vector3( anObject3D.Translation.X, terrainHeight, 
-			anObject3D.Translation.Z);
+            anObject3D.Translation = new Vector3(anObject3D.Translation.X, terrainHeight,
+            anObject3D.Translation.Z);
       }
 
    public void setBlendingState(bool state) {

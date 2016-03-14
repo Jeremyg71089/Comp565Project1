@@ -162,7 +162,7 @@ public class TerrainMap : Game {
     /// </summary>
     /// <param name="filename"> terrain data's file name</param>
     private void saveTerrainAsText(string filename) {
-        StreamWriter fout = new StreamWriter("terrain.dat", false);
+        StreamWriter fout = new StreamWriter(filename, false);
         fout.WriteLine("Terrain data: vertex positions (x,y,z) and colors (r,g,b)");
         for(int x = 0; x < textureWidth; x++) 
 	        for(int z = 0; z < textureHeight; z++)
@@ -186,8 +186,8 @@ public class TerrainMap : Game {
             heightMap = new Color[textureWidth, textureHeight];
             heightMapInt = new int[textureWidth, textureHeight];
             center = new int[nCenter,2];
-            step = 5;
-            radius = 11;
+            step = 11;
+            radius = 15;
             
             int xPos, zPos, c;
             for(int x = 0; x < textureWidth; x++)
@@ -209,20 +209,25 @@ public class TerrainMap : Game {
                 xPos = center[c, 0];
                 c = random.Next(0, nCenter);
                 zPos = center[c, 1];
-                for (int s = 0; s < 2000; s++)
+                for (int s = 0; s < 4000; s++)
                 {
                     
                     for (int x = xPos - radius; x <= xPos + radius; x++)
                     {
                         for (int z = zPos - radius; z <= zPos + radius; z++)
                         {
+                            double xDist = x - xPos;
+                            double zDist = z - zPos;
+                            double sumOfSquares = Math.Pow(xDist,2) + Math.Pow(zDist,2);
+                            double distance = Math.Sqrt(sumOfSquares);
                             if ((x >= 0 && x < (textureWidth)) && (z >= 0 && z < (textureHeight)))
                             {
+
                                 if (x > 255 && z > 255)
                                 {
 
                                 }
-                                else {
+                                else if(radius >= distance) {
                                     heightMapInt[x, z]++;
                                 }
                                 
@@ -233,7 +238,7 @@ public class TerrainMap : Game {
 
                     xPos += (step * random.Next(-1, 2));
                     zPos += (step * random.Next(-1, 2));
-                    if ((xPos >= 0 && xPos < textureWidth) && (zPos >= 0 && zPos < textureHeight))
+                    if ((xPos >= 0 && xPos < textureWidth) && (zPos >= 0 && zPos < textureHeight) && (xPos > 255 && zPos >255))
                     {
                         c = random.Next(0, nCenter);
                         xPos = center[c, 0];
@@ -291,34 +296,34 @@ public class TerrainMap : Game {
 	private Vector4 heightToVector4(int h) {
 		int r, g, b;
 		if (h < 50){  // dark grass
-			r = 0;  
-			g = 128 + random.Next(65);  // 128 .. 192 ;
+			r = 255;
+            g = 0;   // 128 .. 192 ;
 			b = 0;  
 			}
 		else if (h < 75) {  // lighter green grass
-			r = 64 + random.Next(65);		// 64 .. 128 ;
-			g = 128 + random.Next(33);		// 128 .. 160 ;
-			b = random.Next(33);				// 0 .. 32 
+            r = 0;		// 64 .. 128 ;
+			g = 255;		// 128 .. 160 ;
+			b = 255;				// 0 .. 32 
 			}
 		else if (h < 100) { // lighter green / yellow grass
-			r = 128 + random.Next(33);		// 128 .. 160 
-			g = 160 + random.Next(33);		// 160 .. 192
-			b = 32 + random.Next(33);		// 32 .. 64
+			r = 255;		// 128 .. 160 
+			g = 255;		// 160 .. 192
+			b = 153;		// 32 .. 64
 			}
 		else if (h < 125) {  // green .. brown dirt
-			r = 160 + random.Next(21);		// 160 .. 180
-			g = 192 - random.Next(65);		// 192 .. 128
-			b = 64 - random.Next(33);		// 64 .. 32
+			r = 153;		// 160 .. 180
+			g = 153;		// 192 .. 128
+			b = 255;		// 64 .. 32
 			}
 		else if (h < 150) {  // dark to lighter dirt
-			r = 180 - random.Next(61);		// 180 .. 120
-			g = 120 - random.Next(21);		// 120 .. 100
-			b = 20; 
+			r = 153;		// 180 .. 120
+			g = 0;		// 120 .. 100
+			b = 153; 
 			}
 		else if (h < 175) { // light dirt to gray
-			r = 180 - random.Next(41);		// 180 .. 120
-			g = 120 - random.Next(21);		// 120 .. 100
-			b = 20 + random.Next(41);		// 20 .. 60
+			r = 255;		// 180 .. 120
+			g = 102;		// 120 .. 100
+			b = 178;		// 20 .. 60
 			}
 		else if (h < 225)    // dark gray to light gray
 			r = g = b = 128 + random.Next(98);  // 128 .. 225
@@ -401,7 +406,12 @@ public class TerrainMap : Game {
 
    protected override void Update(GameTime gameTime) {
       KeyboardState keyboardState = Keyboard.GetState();
-      if (keyboardState.IsKeyDown(Keys.Escape)) Exit();
+      if (keyboardState.IsKeyDown(Keys.Escape))
+            {
+                saveTerrainAsText("TerrainText");
+                Exit();
+            }
+                
       else if (Keyboard.GetState().IsKeyDown(Keys.T) && !oldState.IsKeyDown(Keys.T))
          showHeight = ! showHeight;
       oldState = keyboardState;    // Update saved state.
