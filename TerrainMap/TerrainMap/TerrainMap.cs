@@ -87,7 +87,7 @@ public class TerrainMap : Game {
         int[,] heightMapInt;
         int[,] center;
         int step, radius;
-        int nCenter = 512;
+        int nCenter = 5;
         GraphicsDeviceManager graphics;
         GraphicsDevice device;
         SpriteBatch spriteBatch;
@@ -186,14 +186,14 @@ public class TerrainMap : Game {
             heightMap = new Color[textureWidth, textureHeight];
             heightMapInt = new int[textureWidth, textureHeight];
             center = new int[nCenter,2];
-            step = 11;
-            radius = 15;
+            step = 9;
+            radius = 27;
             
             int xPos, zPos, c;
-            for(int x = 0; x < textureWidth; x++)
+            for(int x = 0; x < nCenter; x++)
             {
-                center[x, 0] = x;
-                center[x, 1] = x;
+                center[x, 0] = random.Next(0, 255);
+                center[x, 1] = random.Next(0, 255);
             }
             for(int x = 0; x < textureWidth; x++)
             {
@@ -202,14 +202,13 @@ public class TerrainMap : Game {
                     heightMapInt[x, z] = 0;
                 }
             }
-            for (int p = 0; p < 10; p++)
+            for (int p = 0; p < 7; p++)
             {
                 System.Console.WriteLine("Passes to Go: " + (5 - p));
                 c = random.Next(0, nCenter);
                 xPos = center[c, 0];
-                c = random.Next(0, nCenter);
                 zPos = center[c, 1];
-                for (int s = 0; s < 4000; s++)
+                for (int s = 0; s < 3000; s++)
                 {
                     
                     for (int x = xPos - radius; x <= xPos + radius; x++)

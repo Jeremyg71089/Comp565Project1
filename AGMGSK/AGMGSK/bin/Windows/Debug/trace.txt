@@ -1,0 +1,3 @@
+April 19, 2016 trace output from AGMGSKv7
+Scene created with 81 collidable objects.
+0 hours 0 minutes 29 seconds elapsed until system exit

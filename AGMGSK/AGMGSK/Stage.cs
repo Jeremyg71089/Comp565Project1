@@ -110,6 +110,7 @@ public class Stage : Game {
 	private StreamWriter fout = null;
 	// Stage variables
 	private TimeSpan time;  // if you need to know the time see Property Time
+    protected bool lerp = false;
 
 
    public Stage() : base() {
@@ -280,12 +281,42 @@ public class Stage : Game {
 	/// </summary>
 	/// <param name="anObject3D"> has  Translation.X and Translation.Y values</param>
    public void setSurfaceHeight(Object3D anObject3D) {
-      float terrainHeight = terrain.surfaceHeight( 
-			(int) (anObject3D.Translation.X / spacing), 
-			(int) (anObject3D.Translation.Z / spacing) );
-            anObject3D.Translation = new Vector3(anObject3D.Translation.X, terrainHeight,
-            anObject3D.Translation.Z);
-      }
+            float terrainHeight;
+            if (!lerp)
+            {
+                terrainHeight = terrain.surfaceHeight(
+                (int)(anObject3D.Translation.X / spacing),
+                (int)(anObject3D.Translation.Z / spacing));
+                
+            }
+            else
+            {
+                Vector2 topLeftLocation = new Vector2(((int)(anObject3D.Translation.X / spacing)) * spacing,((int)(anObject3D.Translation.Z / spacing)) * spacing);
+                Vector2 topLeftTerrainLocation = new Vector2((int)(anObject3D.Translation.X / spacing),(int)(anObject3D.Translation.Z / spacing));
+                float topLeftY = terrain.surfaceHeight((int)topLeftTerrainLocation.X, (int)topLeftTerrainLocation.Y);
+                float topRightY = terrain.surfaceHeight((int)topLeftTerrainLocation.X + 1, (int)topLeftTerrainLocation.Y);
+                float bottomLeftY = terrain.surfaceHeight((int)topLeftTerrainLocation.X, (int)topLeftTerrainLocation.Y + 1);
+                float bottomRightY = terrain.surfaceHeight((int)topLeftTerrainLocation.X + 1, (int)topLeftTerrainLocation.Y + 1);
+                Vector3 topLeftV3 = new Vector3(topLeftLocation.X, topLeftY, topLeftLocation.Y);
+                Vector3 topRightV3 = new Vector3(topLeftLocation.X + spacing, topRightY, topLeftLocation.Y);
+                Vector3 bottomLeftV3 = new Vector3(topLeftLocation.X, bottomLeftY, topLeftLocation.Y + spacing);
+                Vector3 bottomRightV3 = new Vector3(topLeftLocation.X + spacing, bottomRightY, topLeftLocation.Y + spacing);
+                if (Vector3.Distance(topLeftV3, anObject3D.Translation) < Vector3.Distance(bottomRightV3, anObject3D.Translation))
+                {
+                    float heightX = Vector3.Lerp(topLeftV3, topRightV3, ((float)(anObject3D.Translation.X - topLeftV3.X) / spacing)).Y - topLeftV3.Y;
+                    float heightZ = Vector3.Lerp(topLeftV3, bottomLeftV3, ((float)(anObject3D.Translation.Z - topLeftV3.Z) / spacing)).Y - topLeftV3.Y;
+                    terrainHeight = topLeftV3.Y + heightX + heightZ;
+                }
+                else
+                {
+                    float heightX = Vector3.Lerp(bottomRightV3, bottomLeftV3, ((float)(anObject3D.Translation.X - bottomRightV3.X) / spacing)).Y - bottomRightV3.Y;
+                    float heightZ = Vector3.Lerp(bottomRightV3, topRightV3, ((float)(anObject3D.Translation.Z - bottomRightV3.Z) / spacing)).Y - bottomRightV3.Y;
+                    terrainHeight = bottomRightV3.Y - heightX - heightZ;
+                }
+            }
+            anObject3D.Translation = new Vector3(anObject3D.Translation.X, terrainHeight,anObject3D.Translation.Z);
+
+        }
 
    public void setBlendingState(bool state) {
       if (state) display.BlendState = blending;
@@ -341,7 +372,7 @@ public class Stage : Game {
       inspector.setInfo(1, "Press keyboard for input (not case sensitive 'H' || 'h')");
       inspector.setInfo(2, "Inspector toggles:  'H' help or info   'M'  matrix or info   'I'  displays next info pane.");
       inspector.setInfo(3, "Arrow keys move the player in, out, left, or right.  'R' resets player to initial orientation.");
-      inspector.setInfo(4, "Stage toggles:  'B' bounding spheres, 'C' || 'X' cameras, 'F' fog, 'T' updates, 'Y' yon");
+      inspector.setInfo(4, "Stage toggles:  'B' bounding spheres, 'C' || 'X' cameras, 'F' fog, 'T' updates, 'Y' yon, 'L' lerp");
       // initialize empty info strings
       for (int i = 5; i < 20; i++) inspector.setInfo(i, "  ");
       // set blending for bounding sphere drawing
@@ -457,9 +488,13 @@ public class Stage : Game {
       // set miscellaneous display on
       else if (keyboardState.IsKeyDown(Keys.M) && !oldKeyboardState.IsKeyDown(Keys.M)) {
          inspector.ShowMatrices = ! inspector.ShowMatrices;
-         inspector.ShowHelp = false; }
-      // toggle update speed between FixedStep and ! FixedStep
-      else if (keyboardState.IsKeyDown(Keys.T) && !oldKeyboardState.IsKeyDown(Keys.T))
+         inspector.ShowHelp = false;
+            }
+    else if (keyboardState.IsKeyDown(Keys.L) && !oldKeyboardState.IsKeyDown(Keys.L)) {
+                lerp = !lerp;
+            }
+             // toggle update speed between FixedStep and ! FixedStep
+    else if (keyboardState.IsKeyDown(Keys.T) && !oldKeyboardState.IsKeyDown(Keys.T))
          FixedStepRendering = ! FixedStepRendering;
       else if (keyboardState.IsKeyDown(Keys.Y) && !oldKeyboardState.IsKeyDown(Keys.Y))
          YonFlag = ! YonFlag;  // toggle Yon clipping value.

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Jeremy/Documents/GitHub/Comp565Project1/AGMGSK/AGMGSK/Content/colorTexture.png</SourceFile>
-  <SourceTime>2016-03-13T19:28:27.8258021-07:00</SourceTime>
+  <SourceTime>2016-04-11T20:55:30.5877274-07:00</SourceTime>
   <DestFile>C:/Users/Jeremy/Documents/GitHub/Comp565Project1/AGMGSK/AGMGSK/Content/bin/Windows/colorTexture.xnb</DestFile>
-  <DestTime>2016-03-13T19:29:11.7690556-07:00</DestTime>
+  <DestTime>2016-04-11T20:58:34.4786656-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T10:14:44-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
