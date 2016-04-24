@@ -54,62 +54,62 @@ namespace AGMGSKv7 {
 /// 1/20/2016   last  updated
 /// </summary>
 public class Stage : Game {
-   // Range is the length of the cubic volume of stage's terrain.
-   // Each dimension (x, y, z) of the terrain is from 0 .. range (512)
-   // The terrain will be centered about the origin when created.
-   // Note some recursive terrain height generation algorithms (ie SquareDiamond)
-   // work best with range = (2^n) - 1 values (513 = (2^9) -1).
-   protected const int range = 512;
-   protected const int spacing = 150;  // x and z spaces between vertices in the terrain
-   protected const int terrainSize = range * spacing;
-   // Graphics device
-   protected GraphicsDeviceManager graphics;
-   protected GraphicsDevice display;    // graphics context
-   protected BasicEffect effect;        // default effects (shaders)
-   protected SpriteBatch spriteBatch;   // for Trace's displayStrings
-   protected BlendState blending, notBlending;
-   // stage Models
-   protected Model boundingSphere3D;    // a  bounding sphere model
-   protected Model wayPoint3D;          // a way point marker -- for paths.
-   protected bool drawBoundingSpheres = false;
-   protected bool fog = false;
-   protected bool fixedStepRendering = true;     // 60 updates / second
-   // Viewports and matrix for split screen display w/ Inspector.cs
-   protected Viewport defaultViewport;
-   protected Viewport inspectorViewport, sceneViewport;     // top and bottom "windows"
-   protected Matrix sceneProjection, inspectorProjection;
-   // variables required for use with Inspector
-   protected const int InfoPaneSize = 5;   // number of lines / info display pane
-   protected const int InfoDisplayStrings = 20;  // number of total display strings
-   protected Inspector inspector;
-   protected SpriteFont inspectorFont;
-   // Projection values
-   protected Matrix projection;
-   protected float fov = (float)Math.PI / 4;
-   protected float hither = 5.0f, yon = terrainSize / 5.0f, farYon = terrainSize * 1.3f;
-   protected float fogStart = 4000;
-   protected float fogEnd = 10000;
-   protected bool yonFlag = true;
-   // User event state
-   protected GamePadState oldGamePadState;
-   protected KeyboardState oldKeyboardState;
-   // Lights
-   protected Vector3 lightDirection, ambientColor, diffuseColor;
-   // Cameras
-   protected List<Camera> camera = new List<Camera>();  // collection of cameras
-   protected Camera currentCamera, topDownCamera;
-   protected int cameraIndex = 0;
-   // Required entities -- all AGXNASK programs have a Player and Terrain
-   protected Player player = null;
-   protected NPAgent npAgent = null;
-   protected Terrain terrain = null;
-   protected List<Object3D> collidable = null;
-   // Screen display and other information variables
-   protected double fpsSecond;
-   protected int draws, updates;
-	private StreamWriter fout = null;
-	// Stage variables
-	private TimeSpan time;  // if you need to know the time see Property Time
+    // Range is the length of the cubic volume of stage's terrain.
+    // Each dimension (x, y, z) of the terrain is from 0 .. range (512)
+    // The terrain will be centered about the origin when created.
+    // Note some recursive terrain height generation algorithms (ie SquareDiamond)
+    // work best with range = (2^n) - 1 values (513 = (2^9) -1).
+    protected const int range = 512;
+    protected const int spacing = 150;  // x and z spaces between vertices in the terrain
+    protected const int terrainSize = range * spacing;
+    // Graphics device
+    protected GraphicsDeviceManager graphics;
+    protected GraphicsDevice display;    // graphics context
+    protected BasicEffect effect;        // default effects (shaders)
+    protected SpriteBatch spriteBatch;   // for Trace's displayStrings
+    protected BlendState blending, notBlending;
+    // stage Models
+    protected Model boundingSphere3D;    // a  bounding sphere model
+    protected Model wayPoint3D;          // a way point marker -- for paths
+    protected bool drawBoundingSpheres = false;
+    protected bool fog = false;
+    protected bool fixedStepRendering = true;     // 60 updates / second
+    // Viewports and matrix for split screen display w/ Inspector.cs
+    protected Viewport defaultViewport;
+    protected Viewport inspectorViewport, sceneViewport;     // top and bottom "windows"
+    protected Matrix sceneProjection, inspectorProjection;
+    // variables required for use with Inspector
+    protected const int InfoPaneSize = 5;   // number of lines / info display pane
+    protected const int InfoDisplayStrings = 20;  // number of total display strings
+    protected Inspector inspector;
+    protected SpriteFont inspectorFont;
+    // Projection values
+    protected Matrix projection;
+    protected float fov = (float)Math.PI / 4;
+    protected float hither = 5.0f, yon = terrainSize / 5.0f, farYon = terrainSize * 1.3f;
+    protected float fogStart = 4000;
+    protected float fogEnd = 10000;
+    protected bool yonFlag = true;
+    // User event state
+    protected GamePadState oldGamePadState;
+    protected KeyboardState oldKeyboardState;
+    // Lights
+    protected Vector3 lightDirection, ambientColor, diffuseColor;
+    // Cameras
+    protected List<Camera> camera = new List<Camera>();  // collection of cameras
+    protected Camera currentCamera, topDownCamera;
+    protected int cameraIndex = 0;
+    // Required entities -- all AGXNASK programs have a Player and Terrain
+    protected Player player = null;
+    protected NPAgent npAgent = null;
+    protected Terrain terrain = null;
+    protected List<Object3D> collidable = null;
+    // Screen display and other information variables
+    protected double fpsSecond;
+    protected int draws, updates;
+    private StreamWriter fout = null;
+    // Stage variables
+    private TimeSpan time;  // if you need to know the time see Property Time
     protected bool lerp = false;
 
 
