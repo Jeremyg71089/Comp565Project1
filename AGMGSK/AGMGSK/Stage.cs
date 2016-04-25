@@ -111,9 +111,10 @@ public class Stage : Game {
     // Stage variables
     private TimeSpan time;  // if you need to know the time see Property Time
     protected bool lerp = false;
-
-
-   public Stage() : base() {
+    protected Treasure[] treasures = new Treasure[2];
+        protected NavGraph graph = null;
+        private float npAgentDetectionRadius = 4000.0f;
+        public Stage() : base() {
       graphics = new GraphicsDeviceManager(this);
       Content.RootDirectory = "Content";
       graphics.SynchronizeWithVerticalRetrace = false;  // allow faster FPS
@@ -210,9 +211,12 @@ public class Stage : Game {
             if (yonFlag)  setProjection(yon);
             else setProjection(farYon); } }
 
-   // Methods
-
-   public bool isCollidable(Object3D obj3d) {
+        // Methods
+        private float distance(int x1, int x2, int z1, int z2)
+        {
+            return (float)Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(z2 - z1, 2));
+        }
+        public bool isCollidable(Object3D obj3d) {
       if (collidable.Contains(obj3d)) return true;
       else return false;
       }   
@@ -408,8 +412,12 @@ public class Stage : Game {
          new Vector3(0, 1, 0), 0.0f, "magentaAvatarV6");  // facing +Z
 		npAgent.IsCollidable = false;  // npAgent does not test for collisions
       Components.Add(npAgent);
-		// create file output stream for trace()
-		fout = new StreamWriter("trace.txt", false);
+            treasures[0] = new Treasure(this, "Treasure 0", new Vector3(447 * spacing, terrain.surfaceHeight(447, 453) + 100, 453 * spacing), new Vector3(0, 1, 0), 0.0f, "treasure");
+            Components.Add(treasures[0]);
+            treasures[1] = new Treasure(this, "Treasure 1", new Vector3(447*spacing, terrain.surfaceHeight(447, 480) + 100, 480* spacing), new Vector3(0, 1, 0), 0.0f, "treasure");
+            Components.Add(treasures[1]);
+            // create file output stream for trace()
+            fout = new StreamWriter("trace.txt", false);
 		Trace = string.Format("{0} trace output from AGMGSKv7", DateTime.Today.ToString("MMMM dd, yyyy"));  
 		//  ------ The wall and pack are required for Comp 565 projects, but not AGMGSK   ---------
 		// create walls for navigation algorithms
@@ -431,13 +439,125 @@ public class Stage : Game {
 		Cloud cloud = new Cloud(this, "cloud", "cloudV3", 20);
 		Components.Add(cloud);
 		Trace = string.Format("Scene created with {0} collidable objects.", Collidable.Count);
-      }
-  
-   /// <summary>
-   /// UnloadContent will be called once per game and is the place to unload
-   /// all content.
-   /// </summary>
-   protected override void UnloadContent() {
+            graph = new NavGraph(this);
+
+            // Populate Graph with NavNodes
+            populateGraph();
+
+            // Add Graph to Game Components
+            Components.Add(graph);
+
+            // Send the Graph to NPAgent
+            npAgent.setTerrainGraph(ref graph);
+        }
+        public void populateGraph()
+        {
+
+            int totalRadius;
+            int npAgentRadius = (int)Math.Ceiling(npAgent.BoundingSphereRadius);
+            int gameObjectRadius;
+            int xCoord;
+            int zCoord;
+
+            // Go through all the collidable objects that are on the ground and add Vertex Nodes around them.
+            // This creates a bounding area where Navigable nodes are not allowed
+            foreach (Object3D gameObject in collidable)
+            {
+               
+                if (gameObject.Name.Contains("cactus") || gameObject.Name.Contains("temple") || gameObject.Name.Contains("wall"))
+                {
+                    gameObjectRadius = (int)Math.Ceiling(gameObject.ObjectBoundingSphereRadius);
+                    totalRadius = (int)(npAgentRadius + gameObjectRadius + 150) / spacing;
+                    xCoord = (int)(gameObject.Translation.X / spacing);
+                    zCoord = (int)(gameObject.Translation.Z / spacing);
+
+                    
+                    for (int x = xCoord - totalRadius; x < xCoord + totalRadius; x++)
+                    {
+                        for (int z = zCoord - totalRadius; z < zCoord + totalRadius; z++)
+                        {
+                          
+                            if (x < range && x > 0 && z < range && z > 0 &&
+                                (distance(x, xCoord, z, zCoord) < totalRadius))
+                            {
+                                graph.addNavNode(new NavNode(new Vector3(x * spacing, terrain.surfaceHeight(x, z), z * spacing), NavNode.NavNodeEnum.VERTEX));
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Add Navigable Nodes using a Quad Tree Partitioning Implementation
+         
+
+            // Remove the Vertex Nodes in the Graph
+            graph.removeVertexNodes();
+
+            // Connect the Graph NavNodes
+            graph.setAdjacents();
+        }
+        public void npAgentTreasureCheck()
+        {
+            Path pathToTreasure;
+            NavNode closestNodeToAgent;
+            NavNode treasureNodeInGraph;
+            Treasure treasureBeingSearched;
+            // Check if the NP Agent is already seeking a treasure
+            if (!npAgent.TreasureHunting)
+            {
+                // Check of there is a treasure that has not been found
+                // If there is no treasure, then do not attempt to look for a treasure
+               
+                    // Find the closest treasure from the NP Agents location
+                 
+                float distanceOfClosest = -1;
+                int treasureIndex = -1;
+                    for(int x = 0; x < treasures.Length; x++)
+                {
+                    if (!treasures[x].Found)
+                    {
+                        float temp = Vector3.Distance(npAgent.AgentObject.Translation, treasures[x].TreasureObject.Translation);
+                        if(distanceOfClosest == -1 || temp < distanceOfClosest)
+                        {
+                            distanceOfClosest = temp;
+                            treasureIndex = x;
+                        }
+                        
+                    }
+                }
+                    // Find the distance between treasure and npAgent
+                    
+
+                    if (distanceOfClosest < npAgentDetectionRadius)
+                    {
+                        // Find the closest node to agent that exists in the graph
+                        closestNodeToAgent = graph.findClosestNavNodeInGraph(npAgent.AgentObject.Translation);
+                        treasureBeingSearched = treasures[treasureIndex];
+
+                        // Get the NavNode from the graph that is located at the treasure's location
+                        treasureNodeInGraph =
+                            graph.getNavNode((int)treasureBeingSearched.TreasureObject.Translation.X, (int)treasureBeingSearched.TreasureObject.Translation.Z);
+
+                        // Get the Path to the Treasure
+                        pathToTreasure = new Path(this, graph.aStarPathFinding(closestNodeToAgent, treasureNodeInGraph), Path.PathType.SINGLE);
+
+                        // Send a reference of the closest treasure to the NPAgent, so that it can
+                        // look for it and update it to "found" if the treasure is found
+                        npAgent.lookForTreasure(ref treasures[treasureIndex], pathToTreasure);
+
+                        // Set the NP Agent to treasure hunting
+                        npAgent.TreasureHunting = true;
+                        npAgent.OnOriginalPath = false;
+                    }
+                
+            }
+        }
+
+        /// <summary>
+        /// UnloadContent will be called once per game and is the place to unload
+        /// all content.
+        /// </summary>
+        protected override void UnloadContent() {
       // TODO: Unload any non ContentManager content here
 		Trace = string.Format("{0} hours {1} minutes {2} seconds elapsed until system exit", time.Hours, time.Minutes, time.Seconds);
 		fout.Close(); // close fout file output stream
@@ -466,6 +586,8 @@ public class Stage : Game {
 			inspector.setInfo(11, agentLocation(player));
 			inspector.setInfo(12, agentLocation(npAgent));
          }
+      //commented out because makes the program crash.
+          //  npAgentTreasureCheck();
       // Process user keyboard events that relate to the render state of the the stage
       KeyboardState keyboardState = Keyboard.GetState();
       if (keyboardState.IsKeyDown(Keys.Escape)) Exit();

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Jeremy/Documents/GitHub/Comp565Project1/AGMGSK/AGMGSK/Content/treasure.fbx</SourceFile>
-  <SourceTime>2016-03-13T21:29:41.1930628-07:00</SourceTime>
+  <SourceFile>C:/Users/Jeremy/Documents/GitHub/Comp565Project1/AGMGSK/AGMGSK/Content/treasure.FBX</SourceFile>
+  <SourceTime>2016-04-24T17:19:58.4728904-07:00</SourceTime>
   <DestFile>C:/Users/Jeremy/Documents/GitHub/Comp565Project1/AGMGSK/AGMGSK/Content/bin/Windows/treasure.xnb</DestFile>
-  <DestTime>2016-03-13T21:47:33.7333914-07:00</DestTime>
+  <DestTime>2016-04-24T17:36:04.7990896-07:00</DestTime>
   <Importer>FbxImporter</Importer>
   <ImporterTime>2015-04-29T10:14:44-07:00</ImporterTime>
   <Processor>ModelProcessor</Processor>

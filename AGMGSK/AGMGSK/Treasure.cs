@@ -19,7 +19,7 @@ namespace AGMGSKv7
 
 
         // Constructor Method
-        public Treasure(Stage stage, string label, string meshFile, Vector3 position, Vector3 orientationAxis, float radians)
+        public Treasure(Stage stage, string label,  Vector3 position, Vector3 orientationAxis, float radians, string meshFile)
             : base(stage, label, meshFile)
         {
             // Create a Object3D for this treasure

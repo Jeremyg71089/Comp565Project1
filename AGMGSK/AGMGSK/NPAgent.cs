@@ -255,10 +255,9 @@ namespace AGMGSKv7 {
             {
                 // If the NPAgent's targeted treasure has not found treasure, look for treasure
                 // and check if the treasure can be tagged.
-                if (!targetTreasure.Found)
+                if (AgentObject!= null &&!targetTreasure.Found)
                 {
-                    // Orient towards treasure
-                    //agentObject.turnToFace(targetTreasure.Location);
+                   
                     agentObject.turnToFace(nextNodeToTreasure.Translation);
 
                     // See if at or close to nextGoal, distance measured in 2D xz plane

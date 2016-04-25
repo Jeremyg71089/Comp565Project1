@@ -330,7 +330,8 @@ namespace AGMGSKv7
 
                 // If the current node is the destination node,
                 // Path is complete, break out of loop
-                if (current.Translation == destination.Translation)
+               
+                if ((current != null && destination != null)&&(current.Translation == destination.Translation))
                 {
                     break;
                 }
